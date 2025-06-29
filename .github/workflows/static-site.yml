@@ -1,9 +1,9 @@
-name: Deploy Static Site
+name: Deploy Sathyadarshana Site
 
 on:
   push:
     branches:
-      - main  # ඔබේ main branch එකට අනුව මෙය වෙනස් කරන්න
+      - main
 
 permissions:
   contents: read
@@ -14,16 +14,16 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2
         with:
-          path: './'  # ඔබේ HTML files තියෙන root folder එක
+          path: .
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v2
