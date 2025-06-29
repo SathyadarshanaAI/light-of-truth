@@ -1,0 +1,49 @@
+<!-- 🌀 Sathyadarshana KP Astrology Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KP Astrology | Sathyadarshana</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1 class="neon-text">🔯 KP Astrology - Sub-Lord Analysis</h1>
+  </header>
+
+  <section class="scroll-section">
+    <h2 class="neon-text">Enter Birth Details</h2>
+    <form id="kpForm">
+      <input type="text" name="name" placeholder="Full Name" required /><br/>
+      <input type="date" name="dob" required /><br/>
+      <input type="time" name="tob" required /><br/>
+      <input type="text" name="place" placeholder="Place of Birth" required /><br/>
+      <button type="submit" class="glow-btn">🔍 Analyze</button>
+    </form>
+  </section>
+
+  <section class="scroll-section" id="kpResult" style="display: none;">
+    <h2 class="neon-text">Your KP Astrology Result</h2>
+    <div id="kpOutput">
+      <!-- Result will appear here -->
+    </div>
+  </section>
+
+  <footer>
+    <p class="footer-text">© 2025 Sathyadarshana | KP by Buddhi AI</p>
+  </footer>
+
+  <script>
+    document.getElementById("kpForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const output = document.getElementById("kpOutput");
+      document.getElementById("kpResult").style.display = "block";
+      output.innerHTML = `
+        <p><strong>🌠 Your KP Sub-Lord analysis is being prepared.</strong><br/>
+        Real-time AI prediction will appear here soon based on your birth data.</p>
+      `;
+    });
+  </script>
+</body>
+</html>
