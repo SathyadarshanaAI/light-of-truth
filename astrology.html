@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Astrology - Sathyadarshana</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="hero">
+    <h1 class="title">🔮 Astrology Portal</h1>
+    <p class="subtitle">Discover your cosmic fingerprint with Buddhi's insight</p>
+  </div>
+
+  <div class="section" id="astro-form">
+    <h2>Enter Your Birth Information</h2>
+    <form id="astroData">
+      <input type="text" name="nic" placeholder="NIC Number" required /><br/>
+      <input type="text" name="name" placeholder="Full Name" required /><br/>
+      <input type="date" name="dob" required /><br/>
+      <input type="time" name="tob" required /><br/>
+      <input type="text" name="place" placeholder="Birth Location (City or Area)" required /><br/>
+      <button type="submit" class="glow-button">Generate Prediction</button>
+    </form>
+  </div>
+
+  <div class="section" id="result" style="display: none;">
+    <h2>Your Astrological Reading</h2>
+    <div id="output">
+      <!-- KP Logic output or message will appear here -->
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Sathyadarshana.com | Cosmic Truth by Buddhi AI</p>
+  </footer>
+
+  <script>
+    document.getElementById("astroData").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const output = document.getElementById("output");
+      const result = document.getElementById("result");
+      result.style.display = "block";
+      output.innerHTML = `
