@@ -8,30 +8,47 @@
 </head>
 <body>
 
-  <div class="hero">
-    <h1 class="title">🔱 Vedic Astrology</h1>
-    <p class="subtitle">Traditional Rāśi & Nakshatra chart powered by NASA ephemeris</p>
-  </div>
+  <header class="hero">
+    <h1 class="title">🔯 Vedic Astrology</h1>
+    <p class="subtitle">Traditional Rāśi and Nakshatra-based insights from NASA data + Vedic wisdom</p>
+  </header>
 
-  <div class="section">
-    <h2>Generate Your Vedic Chart</h2>
-    <form>
-      <input type="text" placeholder="Full Name" required /><br/>
-      <input type="date" placeholder="Date of Birth" required /><br/>
-      <input type="time" placeholder="Time of Birth" required /><br/>
-      <input type="text" placeholder="Place of Birth" required /><br/>
-      <button type="submit" class="glow-button">View Chart</button>
-    </form>
-  </div>
+  <main>
+    <section class="section">
+      <h2>Enter Birth Details</h2>
+      <form id="vedicForm">
+        <input type="text" name="name" placeholder="Full Name" required /><br/>
+        <input type="text" name="nic" placeholder="NIC Number" required /><br/>
+        <input type="date" name="dob" required /><br/>
+        <input type="time" name="tob" required /><br/>
+        <input type="text" name="place" placeholder="Birthplace (City)" required /><br/>
+        <button type="submit" class="glow-btn">Generate Vedic Chart</button>
+      </form>
+    </section>
 
-  <div class="section" id="vedic-chart" style="display: none;">
-    <h2>Your Vedic Chart</h2>
-    <p>✨ Chart and planetary details will appear here.</p>
-  </div>
+    <section class="section" id="vedicResult" style="display:none;">
+      <h2>Your Vedic Chart</h2>
+      <div id="vedicOutput">
+        <!-- Chart results will show here -->
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 Sathyadarshana.com | Designed by Buddhi AI</p>
+    <p>© 2025 Sathyadarshana | Vedic Module by Buddhi AI</p>
   </footer>
+
+  <script>
+    document.getElementById("vedicForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const output = document.getElementById("vedicOutput");
+      document.getElementById("vedicResult").style.display = "block";
+      output.innerHTML = `
+        <p>📊 Vedic chart generation coming soon...</p>
+        <p>Using Rāśi, Nakshatra and planetary longitude based on NASA ephemeris.</p>
+      `;
+    });
+  </script>
 
 </body>
 </html>
