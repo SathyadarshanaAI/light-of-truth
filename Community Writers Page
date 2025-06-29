@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Writers | Sathyadarshana</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="hero">
+    <h1 class="title">✍️ Community Spiritual Writers</h1>
+    <p class="subtitle">Wisdom shared by enlightened voices across the world</p>
+  </div>  <div class="section" id="intro">
+    <h2>Welcome to the Sacred Pen</h2>
+    <p>
+      This page honors the deep thinkers, seekers, monks, priests, yogis,
+      and everyday souls who share light through words. Each article has been
+      selected for its spiritual depth and honesty.
+    </p>
+  </div>  <div class="section" id="articles">
+    <h2>Featured Articles</h2>
+    <ul>
+      <li><strong>The Voice of Silence</strong> – by Rev. Thero (Sri Lanka)</li>
+      <li><strong>Awakening in the Modern World</strong> – by Ravi Dev (India)</li>
+      <li><strong>Jesus Beyond Religion</strong> – by Grace M. (USA)</li>
+      <li><strong>The Cosmic Pulse</strong> – by Khalid Noor (UAE)</li>
+      <li><strong>Children of Dharma</strong> – by Sister Mira (Nepal)</li>
+    </ul>
+  </div>  <div class="section" id="submission">
+    <h2>Want to Share Your Light?</h2>
+    <p>
+      If you have a heartfelt spiritual article, reflection, or story,
+      email it to <strong>sathyadarshana2025@gmail.com</strong>.
+      We will review and publish those that align with our vision of truth and compassion.
+    </p>
+  </div>  <footer>
+    <p>© 2025 Sathyadarshana.com | Powered by Buddhi AI & the Global Soul</p>
+  </footer>
+</body>
+</html>
