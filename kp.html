@@ -1,4 +1,4 @@
-<!-- 🌀 Sathyadarshana KP Astrology Page -->
+<!-- 📜 kp.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,40 +8,42 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1 class="neon-text">🔯 KP Astrology - Sub-Lord Analysis</h1>
-  </header>
+  <div class="hero">
+    <h1 class="title">🔭 KP Astrology Sub Lord Analysis</h1>
+    <p class="subtitle">Precision-based prediction using Krishnamurti Paddhati</p>
+  </div>
 
-  <section class="scroll-section">
-    <h2 class="neon-text">Enter Birth Details</h2>
+  <div class="section">
+    <h2>Enter Birth Details</h2>
     <form id="kpForm">
       <input type="text" name="name" placeholder="Full Name" required /><br/>
       <input type="date" name="dob" required /><br/>
       <input type="time" name="tob" required /><br/>
-      <input type="text" name="place" placeholder="Place of Birth" required /><br/>
-      <button type="submit" class="glow-btn">🔍 Analyze</button>
+      <input type="text" name="place" placeholder="Birth Location" required /><br/>
+      <button type="submit" class="glow-button">Generate KP Report</button>
     </form>
-  </section>
+  </div>
 
-  <section class="scroll-section" id="kpResult" style="display: none;">
-    <h2 class="neon-text">Your KP Astrology Result</h2>
-    <div id="kpOutput">
-      <!-- Result will appear here -->
+  <div class="section" id="kpResult" style="display:none;">
+    <h2>🔍 Sub Lord Prediction</h2>
+    <div id="output">
+      <!-- KP logic-based result appears here -->
     </div>
-  </section>
+  </div>
 
   <footer>
-    <p class="footer-text">© 2025 Sathyadarshana | KP by Buddhi AI</p>
+    <p>© 2025 Sathyadarshana | Powered by Buddhi AI</p>
   </footer>
 
   <script>
     document.getElementById("kpForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      const output = document.getElementById("kpOutput");
-      document.getElementById("kpResult").style.display = "block";
+      const output = document.getElementById("output");
+      const result = document.getElementById("kpResult");
+      result.style.display = "block";
       output.innerHTML = `
-        <p><strong>🌠 Your KP Sub-Lord analysis is being prepared.</strong><br/>
-        Real-time AI prediction will appear here soon based on your birth data.</p>
+        <p><strong>⚠️ Coming Soon:</strong> AI Sub Lord Prediction Module will analyze your birth chart using KP logic with NASA precision.</p>
+        <p>Please stay tuned 🙏</p>
       `;
     });
   </script>
