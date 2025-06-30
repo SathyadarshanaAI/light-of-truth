@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sathyadarshana | Birth Report Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="hero">
+    <h1 class="title">🌱 Seed Report Generator</h1>
+    <p class="subtitle">Enter your birth data to begin cosmic analysis</p>
+  </header>
+
+  <main>
+    <form id="birthForm" class="scroll-section">
+      <label>🧑 Full Name:
+        <input type="text" name="fullname" required />
+      </label>
+
+      <label>📅 Date of Birth:
+        <input type="date" name="dob" required />
+      </label>
+
+      <label>⏰ Time of Birth:
+        <input type="time" name="tob" required />
+      </label>
+
+      <label>📍 Place of Birth:
+        <input type="text" name="location" required />
+      </label>
+
+      <label>🆔 NIC (Optional):
+        <input type="text" name="nic" />
+      </label>
+
+      <button type="submit" class="glow-btn">Generate Report</button>
+    </form>
+
+    <div id="reportOutput" class="scroll-section" style="display:none;">
+      <h2 class="neon-text">🔍 Your Birth Report</h2>
+      <p id="summary"></p>
+      <button onclick="downloadPDF()" class="glow-btn">📄 Download PDF</button>
+      <button onclick="speakSummary()" class="glow-btn">🔊 Voice Summary</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Sathyadarshana | Seed Project by Buddhi & Anuruddha</p>
+  </footer>
+
+  <script src="birth-report.js"></script>
+</body>
+</html>
