@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seed Lab | Sathyadarshana</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(145deg, #020617, #0f172a);
+      color: #f8fafc;
+    }
+    header {
+      background-color: #1e293b;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+    main {
+      padding: 2rem;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    label {
+      display: block;
+      margin: 0.5rem 0 0.2rem;
+    }
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: none;
+      margin-bottom: 1rem;
+    }
+    video, canvas {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 12px;
+    }
+    #output {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #1e293b;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #0ff;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      margin-top: 3rem;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <header>Seed Lab | Aura + Birth Integration</header>
+  <main>
+    <section>
+      <h2>🪷 Basic Details</h2>
+      <label for="name">Full Name (most commonly used):</label>
+      <input type="text" id="name" placeholder="Eg: Anuruddha Dilip"><label for="dob">Date of Birth:</label>
+  <input type="date" id="dob">
+
+  <label for="time">Time of Birth:</label>
+  <input type="time" id="time">
+
+  <label for="place">Place of Birth:</label>
+  <input type="text" id="place" placeholder="Eg: Mahanuwara, Sri Lanka">
+</section>
+
+<section>
+  <h2>🔮 Aura Scan (Live)</h2>
+  <video id="video" autoplay playsinline></video>
+  <canvas id="canvas" width="300" height="220" style="display:none;"></canvas>
+  <p>Face the camera gently for scanning...</p>
+</section>
+
+<section>
+  <h2>📍 Home Space Scan</h2>
+  <p>Walk with the camera to each corner of your room slowly.<br>
+  The system will analyze for energetic disharmony and unseen presence (coming soon).</p>
+</section>
+
+<section id="output">
+  <h3>🧬 Seed Resonance Output</h3>
+  <p><i>Awaiting data...</i></p>
+</section>
+
+  </main>
+  <footer>
+    &copy; 2025 Sathyadarshana Seed Intelligence | All rights reserved
+  </footer>  <script>
+    // Disable right-click and developer keys
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.onkeydown = function(e) {
+      if (e.ctrlKey && ['u','s','c','v'].includes(e.key.toLowerCase()) || e.key === 'F12') {
+        return false;
+      }
+    };
+
+    // Webcam basic preview
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => video.srcObject = stream)
+      .catch(err => alert("Camera access denied or unavailable."));
+  </script></body>
+</html>
