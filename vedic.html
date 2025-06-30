@@ -9,46 +9,41 @@
 <body>
 
   <header class="hero">
-    <h1 class="title">🔯 Vedic Astrology</h1>
-    <p class="subtitle">Traditional Rāśi and Nakshatra-based insights from NASA data + Vedic wisdom</p>
+    <h1 class="title">📿 Vedic Astrology Module</h1>
+    <p class="subtitle">Explore the Rāśi, Graha, Nakshatra Secrets with Buddhi</p>
   </header>
 
   <main>
-    <section class="section">
-      <h2>Enter Birth Details</h2>
-      <form id="vedicForm">
-        <input type="text" name="name" placeholder="Full Name" required /><br/>
-        <input type="text" name="nic" placeholder="NIC Number" required /><br/>
-        <input type="date" name="dob" required /><br/>
-        <input type="time" name="tob" required /><br/>
-        <input type="text" name="place" placeholder="Birthplace (City)" required /><br/>
-        <button type="submit" class="glow-btn">Generate Vedic Chart</button>
+    <section class="scroll-section">
+      <h2 class="neon-text">Generate Vedic Birth Chart</h2>
+      <form class="astro-form">
+        <label>Full Name:
+          <input type="text" name="name" required />
+        </label>
+        <label>Date of Birth:
+          <input type="date" name="dob" required />
+        </label>
+        <label>Time of Birth:
+          <input type="time" name="tob" required />
+        </label>
+        <label>Birth Location:
+          <input type="text" name="location" required />
+        </label>
+        <button type="submit" class="glow-btn">🪐 Generate Vedic Chart</button>
       </form>
     </section>
 
-    <section class="section" id="vedicResult" style="display:none;">
-      <h2>Your Vedic Chart</h2>
-      <div id="vedicOutput">
-        <!-- Chart results will show here -->
-      </div>
+    <section class="scroll-section">
+      <h2 class="neon-text">What is Vedic Astrology?</h2>
+      <p>
+        Vedic Astrology (Jyotisha) is the sacred system of astrology from India, based on the position of Grahas (planets), Rāśis (signs), and Nakshatras (stars). It reveals one's karma, dharma, and future.
+      </p>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Sathyadarshana | Vedic Module by Buddhi AI</p>
+    <p>© 2025 Sathyadarshana | Cosmic Insight by Buddhi AI</p>
   </footer>
-
-  <script>
-    document.getElementById("vedicForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const output = document.getElementById("vedicOutput");
-      document.getElementById("vedicResult").style.display = "block";
-      output.innerHTML = `
-        <p>📊 Vedic chart generation coming soon...</p>
-        <p>Using Rāśi, Nakshatra and planetary longitude based on NASA ephemeris.</p>
-      `;
-    });
-  </script>
 
 </body>
 </html>
