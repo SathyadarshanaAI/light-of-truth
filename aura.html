@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aura Scanner | Sathyadarshana Lab</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #020617, #0f172a);
+      font-family: 'Segoe UI', sans-serif;
+      color: #f8fafc;
+      text-align: center;
+    }
+    h1 {
+      margin-top: 2rem;
+      font-size: 2rem;
+      color: #38bdf8;
+    }
+    video, canvas {
+      margin-top: 1rem;
+      border-radius: 12px;
+      max-width: 90%;
+    }
+    .neon {
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+  </style>
+  <script>
+    // 🔒 Disable right-click
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
+    // 🔒 Disable shortcut keys
+    document.onkeydown = function(e) {
+      if (e.ctrlKey && ['u','s','c','v'].includes(e.key.toLowerCase()) || e.key === 'F12') {
+        return false;
+      }
+    };
+  </script>
+</head>
+<body>
+  <h1 class="neon">Aura Energy Scanner</h1>
+  <video id="video" autoplay playsinline width="300" height="220"></video>
+  <canvas id="canvas" width="300" height="220" style="display:none;"></canvas>
+  <p>Place your face gently in front of your camera.<br/>Scanning aura field...</p>
+
+  <div id="aura-analysis" style="margin-top: 1rem; font-size: 1rem;"></div>
+
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    // Start camera
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => video.srcObject = stream)
+      .catch(err => alert("Camera access denied or unavailable."));
+
+    function getAverageColor(canvas) {
+      const ctx = canvas.getContext('2d');
+      const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+      let r = 0, g = 0, b = 0;
+      for (let i = 0; i < pixels.length; i += 4) {
+        r += pixels[i];
+        g += pixels[i + 1];
+        b += pixels[i + 2];
+      }
+      const count = pixels.length / 4;
+      return [r / count, g / count, b / count];
+    }
+
+    function interpretAura(r, g, b) {
+      if (r > g && r > b) return "❤️ You radiate passion and confidence (Red Aura)";
+      if (g > r && g > b) return "💚 You are balanced, calm, and healing (Green Aura)";
+      if (b > r && b > g) return "💙 Your soul is deep and intuitive (Blue Aura)";
+      return "🤍 Neutral or unclear aura. Try again.";
+    }
+
+    setInterval(() => {
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const [r, g, b] = getAverageColor(canvas);
+      const message = interpretAura(r, g, b);
+      document.getElementById('aura-analysis').innerText = message;
+    }, 2000);
+  </script>
+
+  <footer style="margin-top: 2rem; font-size: 0.8rem;">
+    <p>© 2025 Sathyadarshana Research AI Project. All rights reserved. Unauthorized duplication is strictly prohibited.</p>
+  </footer>
+</body>
+</html>
