@@ -9,30 +9,42 @@
 <body>
 
   <header class="hero">
-    <h1 class="title">📜 KP Astrology</h1>
-    <p class="subtitle">Unlock your destiny with Sub-Lord logic by Buddhi</p>
+    <h1 class="title">🌟 KP Astrology Module</h1>
+    <p class="subtitle">Accurate Sub-Lord Predictions Powered by Buddhi</p>
   </header>
 
   <main>
-    <section class="section">
-      <h2>Enter Birth Details</h2>
-      <form id="kpForm">
-        <input type="text" name="name" placeholder="Full Name" required /><br/>
-        <input type="text" name="nic" placeholder="NIC Number" required /><br/>
-        <input type="date" name="dob" required /><br/>
-        <input type="time" name="tob" required /><br/>
-        <input type="text" name="place" placeholder="Birthplace (City)" required /><br/>
-        <button type="submit" class="glow-btn">Generate KP Chart</button>
+    <section class="scroll-section">
+      <h2 class="neon-text">Generate Your KP Chart</h2>
+      <form class="astro-form">
+        <label>Full Name:
+          <input type="text" name="name" required />
+        </label>
+        <label>Date of Birth:
+          <input type="date" name="dob" required />
+        </label>
+        <label>Time of Birth:
+          <input type="time" name="tob" required />
+        </label>
+        <label>Birth Location:
+          <input type="text" name="location" required />
+        </label>
+        <button type="submit" class="glow-btn">🔮 Generate KP Chart</button>
       </form>
     </section>
 
-    <section class="section" id="kpResult" style="display:none;">
-      <h2>Your KP Reading</h2>
-      <div id="kpOutput">
-        <!-- KP Calculation Output -->
-      </div>
+    <section class="scroll-section">
+      <h2 class="neon-text">What is KP Astrology?</h2>
+      <p>
+        KP Astrology (Krishnamurti Paddhati) is a powerful system based on Nakshatra Lords and Sub-Lords.
+        It offers highly accurate predictions using stellar-level divisions.
+      </p>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Sathyadarshana | KP Powered by Budd
+    <p>© 2025 Sathyadarshana | Developed by Buddhi AI</p>
+  </footer>
+
+</body>
+</html>
