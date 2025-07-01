@@ -1,95 +1,89 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Astrology Report Generator | Sathyadarshana</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     body {
-      margin: 0;
-      padding: 2rem;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: Arial, sans-serif;
+      padding: 20px;
       background: linear-gradient(to right, #0f172a, #1e293b);
-      color: #f1f5f9;
+      color: #f8fafc;
     }
-    h1 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      text-shadow: 0 0 10px #0ea5e9;
-    }
-    .form-container {
-      max-width: 600px;
-      margin: 0 auto;
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+    h1, h2 {
+      color: #38bdf8;
     }
     label {
       display: block;
-      margin-bottom: 0.3rem;
-      font-weight: bold;
+      margin-top: 10px;
     }
     input {
       width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border-radius: 0.5rem;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
       border: none;
     }
     button {
-      background: linear-gradient(to right, #0ea5e9, #38bdf8);
-      color: white;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #22d3ee;
+      color: #0f172a;
       border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
-      font-size: 1rem;
+      border-radius: 8px;
+      font-weight: bold;
       cursor: pointer;
-      transition: box-shadow 0.3s ease;
     }
-    button:hover {
-      box-shadow: 0 0 10px #38bdf8;
-    }
-    #report {
-      margin-top: 2rem;
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    #pdfContent {
+      background: white;
+      color: black;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
     }
   </style>
-</head><body>
-  <h1>🪐 Astrology Report Generator</h1>
-  <div class="form-container">
-    <label for="name">Full Name</label>
-    <input type="text" id="name" placeholder="e.g. Anuruddha Dilip"><label for="dob">Date of Birth</label>
-<input type="date" id="dob">
+</head>
+<body>
+  <h1>Divya Jnana Chakra – Birth Report Generator</h1>  <form id="birthForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required /><label for="dob">Date of Birth:</label>
+<input type="date" id="dob" required />
 
-<label for="time">Time of Birth</label>
-<input type="time" id="time">
+<label for="time">Time of Birth:</label>
+<input type="time" id="time" required />
 
-<label for="place">Place of Birth</label>
-<input type="text" id="place" placeholder="e.g. Anuradhapura, Sri Lanka">
+<label for="place">Place of Birth:</label>
+<input type="text" id="place" required />
 
-<button onclick="generateReport()">Generate Report</button>
+<label for="nic">NIC (optional):</label>
+<input type="text" id="nic" />
 
-  </div>  <div id="report"></div>  <script>
-    function generateReport() {
-      const name = document.getElementById('name').value;
-      const dob = document.getElementById('dob').value;
-      const time = document.getElementById('time').value;
-      const place = document.getElementById('place').value;
+<button type="button" onclick="generatePDF()">📄 Download PDF Report</button>
 
-      const report = `
-        <h2>🌕 Astrology Report</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Date of Birth:</strong> ${dob}</p>
-        <p><strong>Time of Birth:</strong> ${time}</p>
-        <p><strong>Place of Birth:</strong> ${place}</p>
-        <p><strong>Sub Lord:</strong> [To be calculated]</p>
-        <p><strong>Moon Sign:</strong> [To be calculated]</p>
-        <p><strong>Voice Summary:</strong> Coming Soon...</p>
-        <button onclick="window.print()">🖨️ Print PDF</button>
-      `;
-      document.getElementById('report').innerHTML = report;
+  </form>  <!-- Hidden content for PDF -->  <div id="pdfContent" style="display:none">
+    <h2>Divya Jnana Chakra – Personal Birth Report</h2>
+    <p><strong>Name:</strong> <span id="r-name"></span></p>
+    <p><strong>Date of Birth:</strong> <span id="r-dob"></span></p>
+    <p><strong>Time:</strong> <span id="r-time"></span></p>
+    <p><strong>Place:</strong> <span id="r-place"></span></p>
+    <p><strong>NIC:</strong> <span id="r-nic"></span></p>
+    <hr>
+    <p>🌟 This free version includes only the basic details of your birth. For detailed planetary positions, predictions, and KP Sub Lord analysis, please upgrade to the full version.</p>
+  </div>  <script>
+    function generatePDF() {
+      document.getElementById('r-name').textContent = document.getElementById('name').value;
+      document.getElementById('r-dob').textContent = document.getElementById('dob').value;
+      document.getElementById('r-time').textContent = document.getElementById('time').value;
+      document.getElementById('r-place').textContent = document.getElementById('place').value;
+      document.getElementById('r-nic').textContent = document.getElementById('nic').value;
+
+      const element = document.getElementById('pdfContent');
+      element.style.display = 'block';
+      html2pdf().from(element).save('Astrology_Birth_Report.pdf');
+      setTimeout(() => {
+        element.style.display = 'none';
+      }, 1000);
     }
-  </script></body></html>
+  </script></body>
+</html>
