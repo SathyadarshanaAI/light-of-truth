@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Astrology Report Generator | Sathyadarshana</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: linear-gradient(to right, #0f172a, #1e293b);
+      color: #f8fafc;
+    }
+    h1, h2 {
+      color: #38bdf8;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #22d3ee;
+      color: #0f172a;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #pdfContent {
+      background: white;
+      color: black;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+    #languageSwitcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #38bdf8;
+      color: black;
+      padding: 10px;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 0 10px #38bdf8;
+    }
+  </style>
+</head>
+<body>
+  <div id="languageSwitcher" onclick="toggleLanguage()">🌐 Change Language</div>
+
+  <h1>Divya Jnana Chakra – Birth Report Generator</h1>
+  <form id="birthForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required />
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" required />
+
+    <label for="time">Time of Birth:</label>
+    <input type="time" id="time" required />
+
+    <label for="place">Place of Birth:</label>
+    <input type="text" id="place" required />
+
+    <label for="nic">NIC (optional):</label>
+    <input type="text" id="nic" />
+
+    <label for="nickname">Popular/Nickname (optional):</label>
+    <input type="text" id="nickname" />
+
+    <button type="button" onclick="generatePDF()">📄 Download PDF Report</button>
+    <button type="button" onclick="readAloud()">🔊 Voice Summary</button>
+  </form>
+
+  <!-- Hidden PDF content -->
+  <div id="pdfContent" style="display:none">
+    <h2>Divya Jnana Chakra – Personal Birth Report</h2>
+    <p><strong>Name:</strong> <span id="r-name"></span></p>
+    <p><strong>Date of Birth:</strong> <span id="r-dob"></span></p>
+    <p><strong>Time:</strong> <span id="r-time"></span></p>
+    <p><strong>Place:</strong> <span id="r-place"></span></p>
+    <p><strong>NIC:</strong> <span id="r-nic"></span></p>
+    <p><strong>Popular Name:</strong> <span id="r-nickname"></span></p>
+    <hr>
+    <p>🌟 This free version includes only the basic details of your birth. For detailed planetary positions, predictions, and KP Sub Lord analysis, please upgrade to the full version.</p>
+  </div>
+
+  <!-- Translation + Voice Script -->
+  <script>
+    function generatePDF() {
+      document.getElementById('r-name').textContent = document.getElementById('name').value;
+      document.getElementById('r-dob').textContent = document.getElementById('dob').value;
+      document.getElementById('r-time').textContent = document.getElementById('time').value;
+      document.getElementById('r-place').textContent = document.getElementById('place').value;
+      document.getElementById('r-nic').textContent = document.getElementById('nic').value;
+      document.getElementById('r-nickname').textContent = document.getElementById('nickname').value;
+
+      const element = document.getElementById('pdfContent');
+      element.style.display = 'block';
+      html2pdf().from(element).save('Astrology_Birth_Report.pdf');
+      setTimeout(() => { element.style.display = 'none'; }, 1000);
+    }
+
+    function readAloud() {
+      const name = document.getElementById('name').value;
+      const dob = document.getElementById('dob').value;
+      const time = document.getElementById('time').value;
+      const place = document.getElementById('place').value;
+      const nic = document.getElementById('nic').value;
+      const nickname = document.getElementById('nickname').value;
+
+      const message = `Name: ${name}. Born on ${dob} at ${time}, in ${place}. NIC: ${nic}. Nickname: ${nickname}.`;
+      const utterance = new SpeechSynthesisUtterance(message);
+      speechSynthesis.speak(utterance);
+    }
+
+    function toggleLanguage() {
+      const current = document.documentElement.lang;
+      document.documentElement.lang = current === 'en' ? 'si' : current === 'si' ? 'ta' : 'en';
+      location.reload();
+    }
+  </script>
+
+  <!-- Google Translate -->
+  <div id="google_translate_element" style="display:none"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
