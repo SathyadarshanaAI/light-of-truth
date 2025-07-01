@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -45,34 +46,46 @@
   </style>
 </head>
 <body>
-  <h1>Divya Jnana Chakra – Birth Report Generator</h1>  <form id="birthForm">
+  <h1>Divya Jnana Chakra – Birth Report Generator</h1>
+  <form id="birthForm">
     <label for="name">Name:</label>
-    <input type="text" id="name" required /><label for="dob">Date of Birth:</label>
-<input type="date" id="dob" required />
+    <input type="text" id="name" required />
 
-<label for="time">Time of Birth:</label>
-<input type="time" id="time" required />
+    <label for="popular">Popular Name (ප්‍රචලිත නම):</label>
+    <input type="text" id="popular" />
 
-<label for="place">Place of Birth:</label>
-<input type="text" id="place" required />
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" required />
 
-<label for="nic">NIC (optional):</label>
-<input type="text" id="nic" />
+    <label for="time">Time of Birth:</label>
+    <input type="time" id="time" required />
 
-<button type="button" onclick="generatePDF()">📄 Download PDF Report</button>
+    <label for="place">Place of Birth:</label>
+    <input type="text" id="place" required />
 
-  </form>  <!-- Hidden content for PDF -->  <div id="pdfContent" style="display:none">
+    <label for="nic">NIC (optional):</label>
+    <input type="text" id="nic" />
+
+    <button type="button" onclick="generatePDF()">📄 Download PDF Report</button>
+  </form>
+
+  <!-- Hidden content for PDF -->
+  <div id="pdfContent" style="display:none">
     <h2>Divya Jnana Chakra – Personal Birth Report</h2>
     <p><strong>Name:</strong> <span id="r-name"></span></p>
+    <p><strong>Popular Name:</strong> <span id="r-popular"></span></p>
     <p><strong>Date of Birth:</strong> <span id="r-dob"></span></p>
     <p><strong>Time:</strong> <span id="r-time"></span></p>
     <p><strong>Place:</strong> <span id="r-place"></span></p>
     <p><strong>NIC:</strong> <span id="r-nic"></span></p>
     <hr>
     <p>🌟 This free version includes only the basic details of your birth. For detailed planetary positions, predictions, and KP Sub Lord analysis, please upgrade to the full version.</p>
-  </div>  <script>
+  </div>
+
+  <script>
     function generatePDF() {
       document.getElementById('r-name').textContent = document.getElementById('name').value;
+      document.getElementById('r-popular').textContent = document.getElementById('popular').value;
       document.getElementById('r-dob').textContent = document.getElementById('dob').value;
       document.getElementById('r-time').textContent = document.getElementById('time').value;
       document.getElementById('r-place').textContent = document.getElementById('place').value;
@@ -85,5 +98,6 @@
         element.style.display = 'none';
       }, 1000);
     }
-  </script></body>
+  </script>
+</body>
 </html>
