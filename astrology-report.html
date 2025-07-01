@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Divya Jnana Chakra | Astrology Report</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #0f172a, #1e293b);
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      color: #f1f5f9;
+    }
+    h1, h2 {
+      color: #38bdf8;
+    }
+    label {
+      margin-top: 10px;
+      display: block;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      background: #22d3ee;
+      color: #0f172a;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #pdfContent {
+      display: none;
+      background: white;
+      color: black;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    #watermark {
+      font-size: 10px;
+      color: rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 40%;
+      left: 20%;
+      transform: rotate(-30deg);
+    }
+  </style>
+  <script>
+    // Disable shortcuts and right-click
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.onkeydown = function(e) {
+      if (e.ctrlKey && ['u','c','s'].includes(e.key.toLowerCase())) return false;
+      if (e.keyCode == 123) return false;
+    }
+    function maskNIC(nic) {
+      if (nic.length > 4) {
+        return '*****' + nic.slice(-4);
+      }
+      return nic;
+    }
+    function readAloud(text) {
+      const msg = new SpeechSynthesisUtterance(text);
+      window.speechSynthesis.speak(msg);
+    }
+    function generatePDF() {
+      const name = document.getElementById('name').value;
+      const dob = document.getElementById('dob').value;
+      const time = document.getElementById('time').value;
+      const place = document.getElementById('place').value;
+      const nic = document.getElementById('nic').value;
+      const alias = document.getElementById('alias').value;
+
+      document.getElementById('r-name').textContent = name;
+      document.getElementById('r-dob').textContent = dob;
+      document.getElementById('r-time').textContent = time;
+      document.getElementById('r-place').textContent = place;
+      document.getElementById('r-nic').textContent = maskNIC(nic);
+      document.getElementById('r-alias').textContent = alias;
+
+      const element = document.getElementById('pdfContent');
+      element.style.display = 'block';
+
+      readAloud("Generating your Divya Jnana Chakra birth report...");
+
+      html2pdf().set({
+        margin: 0.5,
+        filename: 'Divya_Jnana_Chakra_Report.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      }).from(element).save();
+
+      setTimeout(() => {
+        element.style.display = 'none';
+      }, 1500);
+    }
+  </script>
+</head>
+<body>
+  <h1>🔯 Divya Jnana Chakra - Birth Report Generator</h1>
+  <form>
+    <label>Name:</label><input type="text" id="name" required />
+    <label>Date of Birth:</label><input type="date" id="dob" required />
+    <label>Time of Birth:</label><input type="time" id="time" required />
+    <label>Place of Birth:</label><input type="text" id="place" required />
+    <label>NIC Number:</label><input type="text" id="nic" />
+    <label>Popular Name (සුළඟ නම):</label><input type="text" id="alias" />
+    <button type="button" onclick="generatePDF()">📄 Generate PDF Report</button>
+  </form>
+
+  <div id="pdfContent">
+    <div id="watermark">© 2025 Sathyadarshana – Divya Jnana Chakra | Sacred Report</div>
+    <h2>🌟 Divya Jnana Chakra – Personalized Birth Report</h2>
+    <p><strong>Name:</strong> <span id="r-name"></span></p>
+    <p><strong>Date of Birth:</strong> <span id="r-dob"></span></p>
+    <p><strong>Time:</strong> <span id="r-time"></span></p>
+    <p><strong>Place:</strong> <span id="r-place"></span></p>
+    <p><strong>NIC:</strong> <span id="r-nic"></span></p>
+    <p><strong>Popular Name:</strong> <span id="r-alias"></span></p>
+    <hr>
+    <p>📌 *This is a free version. For planetary data, KP Sub Lord reports, and AI predictions, please access the full astrology module.</p>
+  </div>
+</body>
+</html>
