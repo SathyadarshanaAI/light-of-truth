@@ -1,60 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sathyadarshana Astrology</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Astrology Report Generator | Sathyadarshana</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f172a, #1e293b);
+      color: #f1f5f9;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 10px #0ea5e9;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+    }
+    label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border-radius: 0.5rem;
+      border: none;
+    }
+    button {
+      background: linear-gradient(to right, #0ea5e9, #38bdf8);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+    }
+    button:hover {
+      box-shadow: 0 0 10px #38bdf8;
+    }
+    #report {
+      margin-top: 2rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head><body>
+  <h1>🪐 Astrology Report Generator</h1>
+  <div class="form-container">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" placeholder="e.g. Anuruddha Dilip"><label for="dob">Date of Birth</label>
+<input type="date" id="dob">
 
-  <header class="hero">
-    <h1 class="title">🔯 Sathyadarshana Astrology Portal</h1>
-    <p class="subtitle">Explore the Divine Science with Buddhi</p>
-  </header>
+<label for="time">Time of Birth</label>
+<input type="time" id="time">
 
-  <main>
-    <!-- 🔹 KP Astrology -->
-    <section class="scroll-section">
-      <h2 class="neon-text">KP Astrology</h2>
-      <p>Sub-lord based accurate prediction system, using Krishnamurti Paddhati.</p>
-      <a href="kp.html"><button class="glow-btn">Open KP Module</button></a>
-    </section>
+<label for="place">Place of Birth</label>
+<input type="text" id="place" placeholder="e.g. Anuradhapura, Sri Lanka">
 
-    <!-- 🔹 Vedic Astrology -->
-    <section class="scroll-section">
-      <h2 class="neon-text">Vedic Astrology</h2>
-      <p>Rāśi, Nakshatra, Graha based classic system with NASA integration.</p>
-      <a href="vedic.html"><button class="glow-btn">Vedic Chart</button></a>
-    </section>
+<button onclick="generateReport()">Generate Report</button>
 
-    <!-- 🔹 Nāḍi Jyotisha -->
-    <section class="scroll-section">
-      <h2 class="neon-text">Nāḍi Jyotisha</h2>
-      <p>Reveal your destiny written in ancient palm leaf manuscripts.</p>
-      <a href="nadi.html"><button class="glow-btn">View Nāḍi Module</button></a>
-    </section>
+  </div>  <div id="report"></div>  <script>
+    function generateReport() {
+      const name = document.getElementById('name').value;
+      const dob = document.getElementById('dob').value;
+      const time = document.getElementById('time').value;
+      const place = document.getElementById('place').value;
 
-    <!-- 🔹 Cosmic Vision -->
-    <section class="scroll-section">
-      <h2 class="neon-text">Cosmic Vision</h2>
-      <p>Visualize real-time planetary movement, Poya shadows & solar flares.</p>
-      <a href="cosmic.html"><button class="glow-btn">View Cosmic System</button></a>
-    </section>
-
-    <!-- 🔹 AI Time Twin -->
-    <section class="scroll-section">
-      <h2 class="neon-text">AI Time Twin</h2>
-      <p>Find people born with identical astrological conditions and patterns.</p>
-      <a href="timetwin.html"><button class="glow-btn">Discover Time Twin</button></a>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2025 Sathyadarshana | Powered by Buddhi AI</p>
-  </footer>
-
-  <script src="birth-report.js"></script>
-
-</body>
-</html>
+      const report = `
+        <h2>🌕 Astrology Report</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Date of Birth:</strong> ${dob}</p>
+        <p><strong>Time of Birth:</strong> ${time}</p>
+        <p><strong>Place of Birth:</strong> ${place}</p>
+        <p><strong>Sub Lord:</strong> [To be calculated]</p>
+        <p><strong>Moon Sign:</strong> [To be calculated]</p>
+        <p><strong>Voice Summary:</strong> Coming Soon...</p>
+        <button onclick="window.print()">🖨️ Print PDF</button>
+      `;
+      document.getElementById('report').innerHTML = report;
+    }
+  </script></body></html>
