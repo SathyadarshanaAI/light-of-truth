@@ -1,57 +1,105 @@
-<!-- 🌀 Sathyadarshana Astrologe Page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sathyadarshana Astrologe</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>KP Astrology Report | Sathyadarshana</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #0f172a, #1e293b);
+      color: #e0f2fe;
+      overflow: hidden;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #38bdf8;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 10px;
+      background: #1e293b;
+      color: white;
+    }
+    button {
+      background: linear-gradient(to right, #14b8a6, #06b6d4);
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .neon-btn:hover {
+      box-shadow: 0 0 10px #22d3ee, 0 0 20px #06b6d4;
+    }
+    .report-box {
+      margin-top: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 12px;
+    }
+    .voice-btn {
+      margin-top: 1rem;
+      background: #4ade80;
+      color: black;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: #facc15;
+    }
+  </style>
+  <script>
+    function generateReport() {
+      const name = document.getElementById('name').value;
+      const dob = document.getElementById('dob').value;
+      const tob = document.getElementById('tob').value;
+      const place = document.getElementById('place').value;
+      const nic = document.getElementById('nic').value;
+
+      const report = `
+        <h3>🔮 Astrology Report for ${name}</h3>
+        <p><strong>DOB:</strong> ${dob}</p>
+        <p><strong>Time of Birth:</strong> ${tob}</p>
+        <p><strong>Place:</strong> ${place}</p>
+        <p><strong>NIC:</strong> ${nic}</p>
+        <p><strong>🪐 KP Sub Lord Calculation:</strong> (Coming soon...)</p>
+        <p class="note">PDF download + voice summary enabled. Premium features require login.</p>
+      `;
+      document.getElementById('result').innerHTML = report;
+    }
+
+    function speakSummary() {
+      const text = document.getElementById("result").innerText;
+      const msg = new SpeechSynthesisUtterance(text);
+      msg.lang = 'en-US';
+      window.speechSynthesis.speak(msg);
+    }
+
+    // Disable right-click & shortcut keys
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.onkeydown = function(e) {
+      if (e.ctrlKey || e.key === "F12") return false;
+    };
+  </script>
 </head>
 <body>
-  <header>
-    <h1 class="neon-text">🔯 Sathyadarshana Astrology Portal</h1>
-  </header>
-
-  <!-- ✴️ KP Astrology Section -->
-  <section class="scroll-section">
-    <h2 class="neon-text">KP Astrology</h2>
-    <p>Krishnamurti Paddhati based sub-lord analysis with highest accuracy.</p>
-    <button class="glow-btn" onclick="location.href='kp-prediction.html'">Explore KP Module</button>
-  </section>
-
-  <!-- ✴️ Vedic Astrology Section -->
-  <section class="scroll-section">
-    <h2 class="neon-text">Vedic Astrology</h2>
-    <p>Traditional Rāśi, Nakshatra, and planetary calculations using NASA data.</p>
-    <button class="glow-btn">View Vedic Chart</button>
-  </section>
-
-  <!-- ✴️ Cosmic Vision Section -->
-  <section class="scroll-section">
-    <h2 class="neon-text">Cosmic Vision</h2>
-    <p>Observe real-time planetary orbits, eclipses, and gravitational influences.</p>
-    <button class="glow-btn">Launch Cosmic Viewer</button>
-  </section>
-
-  <!-- ✴️ AI Time Twin Section -->
-  <section class="scroll-section">
-    <h2 class="neon-text">AI Time Twin</h2>
-    <p>Discover people born with identical astrological patterns and timelines.</p>
-    <button class="glow-btn">Find Time Twins</button>
-  </section>
-
-  <!-- ✴️ Nāḍi Jyotisha Section -->
-  <section class="scroll-section" style="background: url('leaf-bg.jpg') center/cover no-repeat;">
-    <h2 class="neon-text">Nāḍi Jyotisha</h2>
-    <p>
-      From ancient palm leaf manuscripts to cosmic insights — discover your
-      past, present, and future as written by the sages of Tamil Nadu and Lanka.
-    </p>
-    <button class="glow-btn">Coming Soon</button>
-  </section>
-
-  <footer>
-    <p class="footer-text">© 2025 Sathyadarshana | Designed by Buddhi AI</p>
-  </footer>
+  <div class="container">
+    <h1>🔮 KP Astrology Report</h1>
+    <input type="text" id="name" placeholder="Full Name" required />
+    <input type="date" id="dob" required />
+    <input type="time" id="tob" required />
+    <input type="text" id="place" placeholder="Place of Birth" required />
+    <input type="text" id="nic" placeholder="NIC (Secure)" required />
+    <button class="neon-btn" onclick="generateReport()">Generate Report</button>
+    <div id="result" class="report-box"></div>
+    <button class="voice-btn" onclick="speakSummary()">🔊 Voice Summary</button>
+  </div>
 </body>
 </html>
