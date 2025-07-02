@@ -8,33 +8,10 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #020617, #0f172a);
+      background: #000;
       color: #e2e8f0;
       overflow-x: hidden;
-    }
-    .section {
-      min-height: 100vh;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      scroll-snap-align: start;
-    }
-    .neon-btn {
-      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
-      color: white;
-      padding: 0.7rem 1.5rem;
-      border: none;
-      border-radius: 9999px;
-      font-weight: bold;
-      margin-top: 1rem;
-      box-shadow: 0 0 10px #0ea5e9;
-      transition: transform 0.3s ease;
-    }
-    .neon-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #38bdf8;
+      scroll-behavior: smooth;
     }
     nav {
       position: sticky;
@@ -42,13 +19,68 @@
       z-index: 999;
       display: flex;
       overflow-x: auto;
-      background: #0f172a;
+      background: rgba(15, 23, 42, 0.95);
       padding: 1rem;
+      box-shadow: 0 4px 10px #0ea5e9;
     }
     nav button {
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 9999px;
+      font-weight: bold;
       margin-right: 1rem;
       white-space: nowrap;
+      box-shadow: 0 0 10px #0ea5e9;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    nav button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #38bdf8;
+    }
+
+    .section {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .section h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px black;
+    }
+
+    .section p {
+      font-size: 1.2rem;
+      text-shadow: 0 0 8px black;
+    }
+
+    .neon-btn {
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 9999px;
+      font-weight: bold;
+      margin-top: 1rem;
+      box-shadow: 0 0 10px #0ea5e9;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .neon-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 20px #38bdf8;
+    }
+
     footer {
       background: #1e293b;
       padding: 1rem;
@@ -61,66 +93,55 @@
 <body>
 
   <nav>
-    <button class="neon-btn" onclick="scrollToSection(0)">Library</button>
-    <button class="neon-btn" onclick="scrollToSection(1)">Astrology</button>
-    <button class="neon-btn" onclick="scrollToSection(2)">Lab</button>
-    <button class="neon-btn" onclick="scrollToSection(3)">News</button>
-    <button class="neon-btn" onclick="scrollToSection(4)">Dharma</button>
-    <button class="neon-btn" onclick="scrollToSection(5)">Medical</button>
-    <button class="neon-btn" onclick="scrollToSection(6)">Voice</button>
-    <button class="neon-btn" onclick="scrollToSection(7)">AI Buddhi</button>
+    <button onclick="scrollToSection(0)">📚 Library</button>
+    <button onclick="scrollToSection(1)">🌌 Astrology</button>
+    <button onclick="scrollToSection(2)">🎵 Lab</button>
+    <button onclick="scrollToSection(3)">📰 News</button>
+    <button onclick="scrollToSection(4)">🤖 AI Buddhi</button>
   </nav>
 
-  <div class="section" style="background-image: url('library.jpg'); background-size: cover;">
-    <h1>📖 Digital Library</h1>
-    <p>Access sacred texts across religions</p>
-    <button class="neon-btn">Enter Library</button>
+  <div class="section" style="background-image: url('library.jpg');">
+    <div>
+      <h1>📚 Sathyadarshana Library</h1>
+      <p>Explore timeless sacred texts across faiths</p>
+      <button class="neon-btn">Enter Library</button>
+    </div>
   </div>
 
-  <div class="section" style="background-image: url('astrology.jpg'); background-size: cover;">
-    <h1>🌌 Vedic Astrology</h1>
-    <p>KP, NASA & Nadi insights</p>
-    <button class="neon-btn">Get Prediction</button>
+  <div class="section" style="background-image: url('astrology.jpg');">
+    <div>
+      <h1>🌌 KP & NASA Astrology</h1>
+      <p>Uncover your destiny through cosmic insights</p>
+      <button class="neon-btn">Get Your Horoscope</button>
+    </div>
   </div>
 
-  <div class="section" style="background-image: url('lab.jpg'); background-size: cover;">
-    <h1>🎵 Music Lab</h1>
-    <p>Smule Voice Studio & Spiritual Remakes</p>
-    <button class="neon-btn">Open Lab</button>
+  <div class="section" style="background-image: url('lab.jpg');">
+    <div>
+      <h1>🎵 Sathyadarshana Music Lab</h1>
+      <p>Spiritual audio healing & Smule Remakes</p>
+      <button class="neon-btn">Open Studio</button>
+    </div>
   </div>
 
-  <div class="section" style="background-image: url('news.jpg'); background-size: cover;">
-    <h1>📰 Sathyadarshana News</h1>
-    <p>Truth-based headlines & blessings</p>
-    <button class="neon-btn">Read News</button>
+  <div class="section" style="background-image: url('news.jpg');">
+    <div>
+      <h1>📰 News Line of Light</h1>
+      <p>Real global updates with daily blessings</p>
+      <button class="neon-btn">Read News</button>
+    </div>
   </div>
 
-  <div class="section" style="background-image: url('dharma.jpg'); background-size: cover;">
-    <h1>🛕 Dharma Sabha</h1>
-    <p>Join Live Zoom Dialogues</p>
-    <button class="neon-btn">Join Sabha</button>
-  </div>
-
-  <div class="section" style="background-image: url('healing.jpg'); background-size: cover;">
-    <h1>🧬 Medical Guidance</h1>
-    <p>Free support for the suffering</p>
-    <button class="neon-btn">Get Help</button>
-  </div>
-
-  <div class="section" style="background-image: url('voice.jpg'); background-size: cover;">
-    <h1>🎙️ Voice of Dharma</h1>
-    <p>Listen to spiritual voices</p>
-    <button class="neon-btn">Listen Now</button>
-  </div>
-
-  <div class="section" style="background-image: url('ai.jpg'); background-size: cover;">
-    <h1>🤖 AI Buddhi</h1>
-    <p>Ask and receive divine insight</p>
-    <button class="neon-btn">Talk to Buddhi</button>
+  <div class="section" style="background-image: url('ai.jpg');">
+    <div>
+      <h1>🤖 Ask AI Buddhi</h1>
+      <p>Talk to your divine assistant now</p>
+      <button class="neon-btn">Talk Now</button>
+    </div>
   </div>
 
   <footer>
-    🌐 Sathyadarshana © 2025 | Designed by Buddhi & Anuruddha | Powered by Divine Light
+    🌐 Sathyadarshana © 2025 | Designed by Buddhi & Anuruddha | Infinite Light Platform
   </footer>
 
   <script>
@@ -133,4 +154,4 @@
   </script>
 
 </body>
-</html>.
+</html>
