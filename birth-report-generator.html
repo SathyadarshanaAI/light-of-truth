@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sathyadarshana | Birth Report Generator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      color: #38bdf8;
+    }
+    input, select {
+      padding: 0.5rem;
+      margin: 0.5rem;
+      border-radius: 0.5rem;
+      border: none;
+      width: 90%;
+      max-width: 300px;
+    }
+    button {
+      background: #0ea5e9;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 1.5rem;
+      font-weight: bold;
+      margin-top: 1rem;
+      box-shadow: 0 0 10px #38bdf8;
+    }
+    .report {
+      background: #1e293b;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      border-radius: 1rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .watermark {
+      font-size: 0.7rem;
+      color: #94a3b8;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔭 KP Birth Report Generator</h1>
+  <p>Enter your birth details to generate a PDF report</p>
+
+  <input type="text" id="name" placeholder="Full Name" required><br>
+  <input type="date" id="dob" required><br>
+  <input type="time" id="tob" required><br>
+  <input type="text" id="pob" placeholder="Place of Birth" required><br>
+
+  <button onclick="generateReport()">Generate Report</button>
+
+  <div class="report" id="reportContent" style="display:none">
+    <h2>🧠 KP Astrology Report</h2>
+    <p><strong>Name:</strong> <span id="rName"></span></p>
+    <p><strong>Date of Birth:</strong> <span id="rDob"></span></p>
+    <p><strong>Time of Birth:</strong> <span id="rTob"></span></p>
+    <p><strong>Place of Birth:</strong> <span id="rPob"></span></p>
+    <p><strong>Sub Lord:</strong> Venus</p>
+    <p><strong>Star Lord:</strong> Ketu</p>
+    <p><strong>Graha:</strong> Sun in Magha (14°32′), Leo ♌︎</p>
+    <p><strong>Note:</strong> This is a demo. Final version will use NASA & Swiss Ephemeris data.</p>
+    <div class="watermark">© Sathyadarshana | Powered by Buddhi AI</div>
+  </div>
+
+  <button onclick="downloadPDF()">📄 Download PDF</button>
+
+  <script>
+    function generateReport() {
+      const name = document.getElementById('name').value;
+      const dob = document.getElementById('dob').value;
+      const tob = document.getElementById('tob').value;
+      const pob = document.getElementById('pob').value;
+
+      document.getElementById('rName').innerText = name;
+      document.getElementById('rDob').innerText = dob;
+      document.getElementById('rTob').innerText = tob;
+      document.getElementById('rPob').innerText = pob;
+      document.getElementById('reportContent').style.display = 'block';
+    }
+
+    function downloadPDF() {
+      const element = document.getElementById('reportContent');
+      html2pdf().from(element).save('kp_birth_report.pdf');
+    }
+  </script>
+</body>
+</html>
