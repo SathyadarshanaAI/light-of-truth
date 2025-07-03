@@ -2,87 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KP Sub Lord Calculator</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #0f172a;
+      font-family: sans-serif;
+      background: linear-gradient(to right, #020617, #1e293b);
       color: #f1f5f9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       padding: 2rem;
     }
-
-    input, button {
-      padding: 0.6rem 1rem;
-      margin: 0.5rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
+    h1 {
+      color: #38bdf8;
     }
-
-    input {
-      width: 220px;
+    .card {
+      background-color: #0f172a;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(56,189,248,0.3);
+      margin-bottom: 1.5rem;
     }
-
     button {
-      background-color: #22d3ee;
-      color: #0f172a;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 9999px;
+      background: #38bdf8;
+      color: #000;
       font-weight: bold;
       cursor: pointer;
     }
-
-    #result {
+    .result {
       margin-top: 1rem;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #38bdf8;
+      padding: 1rem;
+      border-left: 4px solid #38bdf8;
+      background-color: #1e293b;
     }
   </style>
 </head>
 <body>
-  <h1>🌌 KP Sub Lord Calculator</h1>
 
-  <input type="number" id="planet-degree" placeholder="Enter degree (0 - 120)" />
-  <button onclick="calculateSubLord()">Find Sub Lord</button>
+  <h1>🔭 KP Sub Lord Calculator</h1>
+  <p>Enter birth details to calculate Sub Lord predictions (Demo)</p>
 
-  <div id="result"></div>
+  <div class="card">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" placeholder="Enter your name"/><br><br>
+    <button onclick="calculateSubLord()">Calculate Sub Lord</button>
+
+    <div id="result" class="result" style="display:none;"></div>
+  </div>
 
   <script>
-    function getSubLord(planetDegree) {
-      const subLords = [
-        { lord: 'Kethu', span: 3.2 },
-        { lord: 'Venus', span: 7.0 },
-        { lord: 'Sun', span: 6.0 },
-        { lord: 'Moon', span: 10.0 },
-        { lord: 'Mars', span: 7.0 },
-        { lord: 'Rahu', span: 18.0 },
-        { lord: 'Jupiter', span: 16.0 },
-        { lord: 'Saturn', span: 19.0 },
-        { lord: 'Mercury', span: 17.0 }
-      ];
-
-      let deg = planetDegree % 120;
-      let total = 0;
-
-      for (let i = 0; i < subLords.length; i++) {
-        total += subLords[i].span;
-        if (deg <= total) {
-          return subLords[i].lord;
-        }
-      }
-
-      return 'Unknown';
-    }
-
     function calculateSubLord() {
-      const degreeInput = document.getElementById('planet-degree').value;
-      const degree = parseFloat(degreeInput);
-      const result = getSubLord(degree);
-      document.getElementById('result').innerText = '🔱 Sub Lord: ' + result;
+      const name = document.getElementById('name').value || 'N/A';
+      document.getElementById('result').style.display = 'block';
+      document.getElementById('result').innerHTML = `
+        <strong>🔮 Sub Lord Prediction Result</strong><br><br>
+        <strong>Name:</strong> ${name}<br>
+        <strong>Sub Lord:</strong> Venus<br>
+        <strong>Star Lord:</strong> Ketu<br>
+        <strong>Graha:</strong> Sun in Magha (14°32'), Leo ♌︎<br><br>
+        <em>Note: This is a demo output. Final system will include live NASA + KP data.</em>
+      `;
     }
   </script>
+
 </body>
 </html>
