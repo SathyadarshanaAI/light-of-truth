@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KP Voice Summary | Sathyadarshana</title>
+  <style>
+    body {
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    button {
+      background-color: #0ea5e9;
+      color: white;
+      border: none;
+      border-radius: 9999px;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      box-shadow: 0 0 12px #38bdf8;
+      cursor: pointer;
+      margin-top: 1.5rem;
+    }
+    button:hover {
+      background-color: #0284c7;
+    }
+    textarea {
+      width: 90%;
+      max-width: 500px;
+      height: 150px;
+      margin-top: 1rem;
+      border-radius: 1rem;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔊 KP Voice Summary (Demo)</h2>
+  <p>Enter the prediction summary and click "Speak".</p>
+
+  <textarea id="predictionText" placeholder="Enter prediction summary here..."></textarea>
+  <br>
+  <button onclick="speakSummary()">Speak</button>
+
+  <script>
+    function speakSummary() {
+      const text = document.getElementById('predictionText').value;
+      const speech = new SpeechSynthesisUtterance(text);
+      speech.lang = 'en-US';
+      speech.rate = 1;
+      window.speechSynthesis.speak(speech);
+    }
+  </script>
+</body>
+</html>
