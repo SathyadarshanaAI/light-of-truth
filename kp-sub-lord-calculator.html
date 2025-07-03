@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KP Sub Lord Calculator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #0f172a, #1e293b);
+      color: #f8fafc;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    form {
+      margin-bottom: 2rem;
+    }
+    input, button {
+      padding: 0.5rem;
+      margin: 0.5rem;
+      border-radius: 0.5rem;
+      border: none;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #0ea5e9;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 0 8px #38bdf8;
+      cursor: pointer;
+    }
+    button:hover {
+      transform: scale(1.03);
+    }
+    .result {
+      margin-top: 2rem;
+      background: #1e293b;
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px #0ea5e9;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔭 KP Sub Lord Calculator</h1>
+  <form onsubmit="calculate(event)">
+    <input type="text" id="name" placeholder="Enter your name" required />
+    <button type="submit">Calculate Sub Lord</button>
+  </form>
+
+  <div id="result" class="result" style="display:none;">
+    <h2>🔮 Sub Lord Prediction Result</h2>
+    <p><strong>Name:</strong> <span id="r-name"></span></p>
+    <p><strong>Sub Lord:</strong> Venus</p>
+    <p><strong>Star Lord:</strong> Ketu</p>
+    <p><strong>Graha:</strong> Sun in Magha (14°32'), Leo ♌︎</p>
+    <p class="note">*Note: This is a demo output. Final system will include live NASA + KP data.</p>
+  </div>
+
+  <script>
+    function calculate(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      document.getElementById("r-name").innerText = name;
+      document.getElementById("result").style.display = "block";
+    }
+  </script>
+</body>
+</html>
