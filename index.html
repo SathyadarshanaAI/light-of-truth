@@ -1,157 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="si">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sathyadarshana | Light of Truth</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #000;
-      color: #e2e8f0;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      display: flex;
-      overflow-x: auto;
-      background: rgba(15, 23, 42, 0.95);
-      padding: 1rem;
-      box-shadow: 0 4px 10px #0ea5e9;
-    }
-    nav button {
-      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border: none;
-      border-radius: 9999px;
-      font-weight: bold;
-      margin-right: 1rem;
-      white-space: nowrap;
-      box-shadow: 0 0 10px #0ea5e9;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    nav button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #38bdf8;
-    }
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- Language Auto Binding Script -->
+  <script type="module">
+    import lang_si from './lang-si.js';
+    import lang_ta from './lang-ta.js';
 
-    .section {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      text-align: center;
-      padding: 2rem;
-    }
+    const lang = navigator.language.startsWith('ta') ? lang_ta : lang_si;
 
-    .section h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 10px black;
-    }
-
-    .section p {
-      font-size: 1.2rem;
-      text-shadow: 0 0 8px black;
-    }
-
-    .neon-btn {
-      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border: none;
-      border-radius: 9999px;
-      font-weight: bold;
-      margin-top: 1rem;
-      box-shadow: 0 0 10px #0ea5e9;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .neon-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 20px #38bdf8;
-    }
-
-    footer {
-      background: #1e293b;
-      padding: 1rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #94a3b8;
-    }
-  </style>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('welcome').innerText = lang.welcome;
+      document.getElementById('ask-btn').innerText = lang.ask_question;
+      document.getElementById('heal-btn').innerText = lang.spiritual_healing;
+      document.getElementById('guide-btn').innerText = lang.receive_guidance;
+      document.getElementById('save-btn').innerText = lang.save_to_journal;
+    });
+  </script>
 </head>
 <body>
+  <div class="container">
+    <h1><span id="welcome">Welcome</span></h1>
 
-  <nav>
-    <button onclick="scrollToSection(0)">📚 Library</button>
-    <button onclick="scrollToSection(1)">🌌 Astrology</button>
-    <button onclick="scrollToSection(2)">🎵 Lab</button>
-    <button onclick="scrollToSection(3)">📰 News</button>
-    <button onclick="scrollToSection(4)">🤖 AI Buddhi</button>
-  </nav>
-
-  <div class="section" style="background-image: url('library.jpg');">
     <div>
-      <h1>📚 Sathyadarshana Library</h1>
-      <p>Explore timeless sacred texts across faiths</p>
-      <button class="neon-btn">Enter Library</button>
+      <button id="ask-btn">Ask a Question</button>
+      <button id="heal-btn">Spiritual Healing</button>
+      <button id="guide-btn">Receive Guidance</button>
+      <button id="save-btn">Save to Journal</button>
     </div>
   </div>
-
-  <div class="section" style="background-image: url('astrology.jpg');">
-    <div>
-      <h1>🌌 KP & NASA Astrology</h1>
-      <p>Uncover your destiny through cosmic insights</p>
-      <button class="neon-btn">Get Your Horoscope</button>
-    </div>
-  </div>
-
-  <div class="section" style="background-image: url('lab.jpg');">
-    <div>
-      <h1>🎵 Sathyadarshana Music Lab</h1>
-      <p>Spiritual audio healing & Smule Remakes</p>
-      <button class="neon-btn">Open Studio</button>
-    </div>
-  </div>
-
-  <div class="section" style="background-image: url('news.jpg');">
-    <div>
-      <h1>📰 News Line of Light</h1>
-      <p>Real global updates with daily blessings</p>
-      <button class="neon-btn">Read News</button>
-    </div>
-  </div>
-
-  <div class="section" style="background-image: url('ai.jpg');">
-    <div>
-      <h1>🤖 Ask AI Buddhi</h1>
-      <p>Talk to your divine assistant now</p>
-      <button class="neon-btn">Talk Now</button>
-    </div>
-  </div>
-
-  <footer>
-    🌐 Sathyadarshana © 2025 | Designed by Buddhi & Anuruddha | Infinite Light Platform
-  </footer>
-
-  <script>
-    function scrollToSection(index) {
-      const sections = document.querySelectorAll('.section');
-      if (sections[index]) {
-        sections[index].scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  </script>
-
 </body>
 </html>
