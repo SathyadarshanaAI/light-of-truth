@@ -64,6 +64,7 @@
     <p><strong>Star Lord:</strong> Ketu</p>
     <p><strong>Graha:</strong> Sun in Magha (14°32'), Leo ♌︎</p>
     <p><em>Note: This is a demo output. Final system will include live NASA + KP data.</em></p>
+    <button onclick="playSummary()">🔊 Play Voice Summary</button>
   </div>
 
   <script>
@@ -75,6 +76,13 @@
       }
       document.getElementById('rName').textContent = name;
       document.getElementById('result').style.display = 'block';
+    }
+
+    function playSummary() {
+      const name = document.getElementById('name').value.trim();
+      const summary = `Hello ${name || 'seeker'}. Based on KP astrology, your Sub Lord is Venus. Venus brings beauty, harmony, creativity, and love into your life. You may excel in art, relationships, or spiritual service. Be mindful of emotional balance during major Venus periods.`;
+      const utterance = new SpeechSynthesisUtterance(summary);
+      speechSynthesis.speak(utterance);
     }
   </script>
 
