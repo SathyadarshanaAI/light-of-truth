@@ -1,37 +1,113 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sathyadarshana | Light of Truth</title>
-  <link rel="stylesheet" href="style.css" />
-  
-  <!-- Language Auto Binding Script -->
-  <script type="module">
-    import lang_si from './lang-si.js';
-    import lang_ta from './lang-ta.js';
-
-    const lang = navigator.language.startsWith('ta') ? lang_ta : lang_si;
-
-    window.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('welcome').innerText = lang.welcome;
-      document.getElementById('ask-btn').innerText = lang.ask_question;
-      document.getElementById('heal-btn').innerText = lang.spiritual_healing;
-      document.getElementById('guide-btn').innerText = lang.receive_guidance;
-      document.getElementById('save-btn').innerText = lang.save_to_journal;
-    });
-  </script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #0f172a, #1e293b);
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+    header {
+      background: #020617;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #38bdf8;
+      box-shadow: 0 0 10px #38bdf8;
+    }
+    nav {
+      display: flex;
+      overflow-x: auto;
+      background: #0f172a;
+      padding: 0.5rem;
+      gap: 0.5rem;
+      scrollbar-width: none;
+    }
+    nav::-webkit-scrollbar {
+      display: none;
+    }
+    nav a {
+      flex: 0 0 auto;
+      padding: 0.6rem 1rem;
+      border-radius: 9999px;
+      background: linear-gradient(to right, #38bdf8, #0ea5e9);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 0 8px #0ea5e9;
+      transition: transform 0.2s ease;
+    }
+    nav a:hover {
+      transform: scale(1.05);
+    }
+    section {
+      padding: 2rem;
+      text-align: center;
+    }
+    .glow {
+      font-size: 2rem;
+      color: #ffffff;
+      text-shadow: 0 0 10px #38bdf8, 0 0 20px #0ea5e9;
+      animation: flicker 3s infinite;
+    }
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.85; }
+      100% { opacity: 1; }
+    }
+    .ai-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #38bdf8;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #38bdf8;
+      z-index: 999;
+    }
+    .ai-btn:hover {
+      background: #0ea5e9;
+      box-shadow: 0 0 20px #0ea5e9;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1><span id="welcome">Welcome</span></h1>
 
-    <div>
-      <button id="ask-btn">Ask a Question</button>
-      <button id="heal-btn">Spiritual Healing</button>
-      <button id="guide-btn">Receive Guidance</button>
-      <button id="save-btn">Save to Journal</button>
-    </div>
-  </div>
+  <header class="glow">
+    Sathyadarshana – Light of Truth
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="library.html">Library</a>
+    <a href="astrology.html">Astrology</a>
+    <a href="buddhi-ai-vision.html">Meet Buddhi</a>
+    <a href="news.html">News Line</a>
+    <a href="lab.html">Music Lab</a>
+    <a href="dharma.html">Dharma Mandapaya</a>
+  </nav>
+
+  <section>
+    <h2 class="glow">Welcome to Sathyadarshana</h2>
+    <p>Explore Sacred Wisdom, Astrology, Music, and AI-powered insight across all faiths and languages.</p>
+    <p>🌍 Powered by Buddhi – your serenity guide.</p>
+  </section>
+
+  <button class="ai-btn" onclick="location.href='buddhi-ai-vision.html'">
+    💫 Buddhi AI
+  </button>
+
 </body>
 </html>
